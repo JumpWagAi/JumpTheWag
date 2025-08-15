@@ -105,7 +105,8 @@ function App() {
           {/* Waitlist Form */}
           <div className="max-w-md mx-auto mb-6 sm:mb-8 px-4">
             {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <form name="waitlist" method="POST" data-netlify="true" onSubmit={handleSubmit} className="flex flex-col gap-3">
+                <input type="hidden" name="form-name" value="waitlist" />
                 <input
                   type="email"
                   value={email}
