@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+    font-family: 'Maven Pro', sans-serif;
+  }
+}
+
+@layer components {
+  .gradient-text {
+    @apply bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent;
+  }
+  
+  .gradient-border {
+    @apply border border-transparent bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-border;
+  }
+  
+  .btn-primary {
+    @apply bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-secondary {
+    @apply bg-red-800 text-white px-6 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity;
+  }
+  
+  .btn-outline {
+    @apply border border-pink-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-pink-500 hover:text-white transition-colors;
+  }
+
+  .trending-content-container {
+    width: 1280px;
+    height: 580px;
+    margin-top: 634px;
+    margin-left: 80px;
+    gap: 24px;
+  }
+}
