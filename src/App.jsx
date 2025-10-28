@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { FaTiktok, FaTwitter, FaInstagram, FaFacebook } from 'react-icons/fa'
+import { FaTiktok, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -11,13 +11,24 @@ function App() {
     e.preventDefault()
     setIsLoading(true)
     
-    // Simulate API call - replace with your actual waitlist signup logic
-    setTimeout(() => {
+    const formData = new FormData(e.target)
+    
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      
       setIsSubmitted(true)
-      setIsLoading(false)
       setEmail('')
       setShowModal(true)
-    }, 1000)
+    } catch (error) {
+      console.error('Form submission error:', error)
+      alert('Something went wrong. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
 
@@ -35,20 +46,20 @@ function App() {
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold text-white mb-2">Follow Us!</h2>
-            <p className="text-gray-300 mb-4">Stay updated and join our community on social media:</p>
+            <h2 className="text-2xl font-bold text-white mb-2">Sweet! You're on the waitlist.</h2>
+            <p className="text-gray-300 mb-4">While you wait, follow us on social media to stay updated.</p>
             <div className="flex justify-center space-x-6 mb-2">
-              <a href="https://www.tiktok.com/@jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-400 text-3xl">
+              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-400 text-3xl">
                 <FaTiktok />
               </a>
-              <a href="https://twitter.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 text-3xl">
-                <FaTwitter />
-              </a>
-              <a href="https://instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-400 text-3xl">
+              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-400 text-3xl">
                 <FaInstagram />
               </a>
-              <a href="https://facebook.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-600 text-3xl">
-                <FaFacebook />
+              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 text-3xl">
+                <FaTwitter />
+              </a>
+              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500 text-3xl">
+                <FaLinkedin />
               </a>
             </div>
             <span className="text-xs text-gray-400">@jumpthewag</span>
@@ -91,15 +102,17 @@ function App() {
           </div>
           
           <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-            <span className="text-white">The Easiest Way to Join</span>
+            <span className="text-white">The easiest way to join</span>
             <br />
-            <span className="gradient-text">Viral Tiktok Trends</span>
+            <span className="gradient-text">TikTok trends</span>
           </h1>
           
-          <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            Discover trending TikToks and instantly get remix ideas tailored to your niche. 
-            <br className="hidden sm:block" />
-            <span className="text-pink-400 font-semibold block sm:inline"> Be the first to know when we launch!</span>
+          <p className="text-lg sm:text-xl text-gray-300 mb-2 sm:mb-3 max-w-2xl mx-auto px-4">
+            Discover TikTok trends before they go stale and get AI-generated ideas tailored to your niche and brand.
+          </p>
+          
+          <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
+            Be the first to know when we launch. Don't worry, we won't spam you.
           </p>
 
           {/* Waitlist Form */}
@@ -120,7 +133,7 @@ function App() {
                   disabled={isLoading}
                   className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isLoading ? 'Joining...' : 'Join the Waitlist'}
+                  {isLoading ? 'Joining...' : 'Join The Wagon'}
                 </button>
               </form>
             ) : (
@@ -201,14 +214,39 @@ function App() {
 
       {/* Footer */}
       <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-800">
-        <div className="container mx-auto text-center">
-          <div className="flex items-center justify-center space-x-2 mb-3 sm:mb-4">
-            <img src="/logo-1.png" alt="JumpWag Logo" className="w-5 h-5 sm:w-6 sm:h-6" />
-            <span className="text-white font-bold text-sm sm:text-base">JumpWag</span>
+        <div className="container mx-auto">
+          <div className="flex flex-col items-center space-y-4 mb-4">
+            <div className="flex items-center space-x-2">
+              <img src="/logo-1.png" alt="JumpWag Logo" className="w-5 h-5 sm:w-6 sm:h-6" />
+              <span className="text-white font-bold text-sm sm:text-base">JumpWag</span>
+            </div>
+            
+            <div className="flex items-center space-x-6">
+              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-400 transition-colors text-xl">
+                <FaTiktok />
+              </a>
+              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors text-xl">
+                <FaInstagram />
+              </a>
+              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-xl">
+                <FaTwitter />
+              </a>
+              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors text-xl">
+                <FaLinkedin />
+              </a>
+            </div>
           </div>
-          <p className="text-gray-400 text-xs sm:text-sm">
-            © 2025 JumpWag. All rights reserved. | Coming Soon
-          </p>
+          
+          <div className="text-center">
+            <div className="flex justify-center space-x-4 mb-3 text-xs sm:text-sm">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a>
+              <span className="text-gray-600">|</span>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+            <p className="text-gray-400 text-xs sm:text-sm">
+              © 2025 JumpWag. All rights reserved.
+            </p>
+          </div>
         </div>
       </footer>
     </div>
