@@ -122,6 +122,7 @@ function App() {
                 <input type="hidden" name="form-name" value="waitlist" />
                 <input
                   type="email"
+                  name="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email address"
