@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { FaTiktok, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa'
+import { FaTiktok, FaLinkedin } from 'react-icons/fa'
+import { FaXTwitter, FaInstagram } from 'react-icons/fa6'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -31,225 +32,270 @@ function App() {
     }
   }
 
-
-
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-void overflow-x-hidden relative">
       {/* Modal CTA for Social Media */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="bg-gray-900 rounded-2xl shadow-lg p-8 max-w-sm w-full text-center relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
+          <div className="bg-card rounded-2xl shadow-lg m-4 p-8 max-w-sm w-full text-center relative border-gradient">
             <button
-              className="absolute top-3 right-3 text-gray-400 hover:text-white text-2xl"
+              className="absolute top-3 right-3 text-neutral-light/60 hover:text-white text-2xl"
               onClick={() => setShowModal(false)}
               aria-label="Close"
             >
               &times;
             </button>
-            <h2 className="text-2xl font-bold text-white mb-2">Sweet! You're on the waitlist.</h2>
-            <p className="text-gray-300 mb-4">While you wait, follow us on social media to stay updated.</p>
+            <h2 className="text-4xl font-bold gradient-text mb-2">Sweet! </h2>
+            <h2 className="text-2xl font-bold mb-2">You're on the waitlist.</h2>
+            <p className="text-white mb-4">While you wait, follow us on social media to stay updated.</p>
             <div className="flex justify-center space-x-6 mb-2">
-              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pink-400 text-3xl">
+              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-pink text-3xl">
                 <FaTiktok />
               </a>
-              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-purple-400 text-3xl">
-                <FaInstagram />
+              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-blue text-3xl">
+                <FaXTwitter />
               </a>
-              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-400 text-3xl">
-                <FaTwitter />
-              </a>
-              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-blue-500 text-3xl">
+              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-blue text-3xl">
                 <FaLinkedin />
               </a>
+              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gradient-purple text-3xl">
+                <FaInstagram />
+              </a>
             </div>
-            <span className="text-xs text-gray-400">@jumpthewag</span>
+            <span className="text-xs text-neutral-light/50">@jumpthewag</span>
           </div>
         </div>
       )}
-      {/* Header */}
-      <header className="bg-black border-b border-gray-800">
-        <div className="container mx-auto px-4 sm:px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-1">
-              <img src="/logo-1.png" alt="JumpWag Logo" className="w-6 h-6 sm:w-10 sm:h-10" />
-              <span className="text-white text-lg sm:text-xl font-bold">JumpWag</span>
-            </div>
-            
-            <nav className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-white hover:text-gray-300 transition-colors">Features</a>
-              <a href="#waitlist" className="text-white hover:text-gray-300 transition-colors">Join Waitlist</a>
-            </nav>
-            
-            <button className="btn-secondary text-sm sm:text-base px-3 py-2 sm:px-6 sm:py-2">
-              Coming Soon
-            </button>
-          </div>
-        </div>
-      </header>
 
-      {/* Hero Section */}
-      <section className="relative py-12 sm:py-20 px-4 sm:px-6">
-        <div className="container mx-auto text-center">
-          {/* Background gradient lines */}
-          <div className="absolute right-0 top-0 w-1/3 h-full opacity-20">
-            {/* <div className="w-full h-full bg-gradient-to-b from-purple-500 via-blue-500 to-purple-500"></div> */}
+      {/* Background vector overlays - desktop (right side only) */}
+      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '150px', left: 'calc(50% + 50px)', width: '636px', height: '601px', transform: 'rotate(-121.72deg)' }}>
+        <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
+      </div>
+      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '182px', left: 'calc(50% + 77px)', width: '636px', height: '601px', transform: 'rotate(-121.72deg)' }}>
+        <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
+      </div>
+
+      {/* Mobile vector overlays - spilling in from edges */}
+      {/* Right side - top */}
+      <div className="lg:hidden absolute pointer-events-none" style={{ top: '60px', right: '-20px', width: '90px', height: '84px', transform: 'rotate(-121.72deg)' }}>
+        <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
+      </div>
+      {/* Right side - bottom */}
+      <div className="lg:hidden absolute pointer-events-none" style={{ bottom: '100px', right: '-30px', width: '96px', height: '90px', transform: 'rotate(-121.72deg)' }}>
+        <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
+      </div>
+      {/* Left side - midsection */}
+      <div className="lg:hidden absolute pointer-events-none" style={{ top: '40%', left: '-30px', width: '90px', height: '84px', transform: 'rotate(58.28deg)' }}>
+        <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
+      </div>
+
+      {/* Main Content */}
+      <main className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20 py-12 lg:py-0">
+        {/* Left Content */}
+        <div className="flex-1 max-w-xl lg:max-w-2xl text-center lg:text-left">
+          {/* Logo */}
+          <div className="flex items-center justify-center lg:justify-start space-x-2 mb-10 lg:mb-16">
+            <img src="/Jumpwag_logo_full.png" alt="JumpWag Logo" className="h-8" />
           </div>
-          
-          <div className="mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-semibold">
-              🚀 Coming Soon
-            </span>
-          </div>
-          
-          <h1 className="text-3xl sm:text-5xl md:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
-            <span className="text-white">The easiest way to join</span>
+
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mb-6">
+            <span className="text-white">The Easiest Way to </span>
             <br />
-            <span className="gradient-text">TikTok trends</span>
+            Join <span className="gradient-text">Tiktok Trends</span>
           </h1>
-          
-          <p className="text-lg sm:text-xl text-gray-300 mb-2 sm:mb-3 max-w-2xl mx-auto px-4">
+
+          {/* Subheading */}
+          <p className="text-neutral-light/70 text-base sm:text-lg mb-8 max-w-md mx-auto lg:mx-0">
             Discover TikTok trends before they go stale and get AI-generated ideas tailored to your niche and brand.
           </p>
-          
-          <p className="text-sm sm:text-base text-gray-400 mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
-            Be the first to know when we launch. Don't worry, we won't spam you.
-          </p>
 
-          {/* Waitlist Form */}
-          <div className="max-w-md mx-auto mb-6 sm:mb-8 px-4">
+          {/* Email Form */}
+          <div className="mb-4">
             {!isSubmitted ? (
-              <form name="waitlist" method="POST" data-netlify="true" onSubmit={handleSubmit} className="flex flex-col gap-3">
+              <form name="waitlist" method="POST" data-netlify="true" onSubmit={handleSubmit}>
                 <input type="hidden" name="form-name" value="waitlist" />
-                <input
-                  type="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email address"
-                  className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-full bg-gray-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-pink-500 transition-colors text-sm sm:text-base"
-                  required
-                />
-                <button 
-                  type="submit" 
-                  disabled={isLoading}
-                  className="btn-primary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isLoading ? 'Joining...' : 'Join The Wagon'}
-                </button>
+                {/* Mobile: stacked layout */}
+                <div className="flex flex-col gap-3 sm:hidden max-w-md mx-auto">
+                  <div className="border-gradient rounded-full overflow-hidden">
+                    <input
+                      type="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Email"
+                      className="w-full px-6 py-4 bg-transparent text-white placeholder-neutral-light/50 focus:outline-none "
+                      required
+                    />
+                  </div>
+                  <button 
+                    type="submit" 
+                    disabled={isLoading}
+                    className="btn-primary w-[182px] mx-auto rounded-full px-8 py-4 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isLoading ? 'Joining...' : 'Join the Wagon'}
+                  </button>
+                </div>
+                {/* Desktop: button inside input */}
+                <div className="hidden sm:flex border-gradient rounded-full p-2 items-center max-w-lg lg:mx-0 mx-auto">
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Email"
+                    className="flex-1 px-5 py-2 bg-transparent text-white placeholder-neutral-light/50 focus:outline-none"
+                    required
+                  />
+                  <button 
+                    type="submit" 
+                    disabled={isLoading}
+                    className="btn-primary rounded-full px-6 py-3 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  >
+                    {isLoading ? 'Joining...' : 'Join the Wagon'}
+                  </button>
+                </div>
               </form>
             ) : (
-              <div className="bg-green-900 border border-green-700 rounded-full px-4 sm:px-6 py-3 sm:py-4">
-                <p className="text-green-400 font-semibold text-sm sm:text-base">🎉 You're on the list! We'll notify you when we launch.</p>
+              <div className="border-gradient rounded-full px-6 py-4 max-w-md mx-auto lg:mx-0">
+                <p className="text-pop-pink font-semibold text-center">🎉 You're on the list! We'll notify you when we launch.</p>
               </div>
             )}
           </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4 text-gray-400 text-sm">
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-              </svg>
-              <span>Free to join</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-              </svg>
-              <span>Early access</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-              </svg>
-              <span>No spam</span>
-            </div>
+          {/* Disclaimer */}
+          <p className="text-neutral-light/50 text-sm mb-8 max-w-lg mx-auto lg:mx-0">
+            Be the first to know when we launch.<br className="lg:hidden" /> Don't worry, we won't spam you.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center justify-center lg:justify-start space-x-6">
+            <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-70 transition-opacity text-xl">
+              <FaTiktok />
+            </a>
+            <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-70 transition-opacity text-xl">
+              <FaXTwitter />
+            </a>
+            <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-70 transition-opacity text-xl">
+              <FaLinkedin />
+            </a>
+            <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-accent hover:opacity-70 transition-opacity text-xl">
+              <FaInstagram />
+            </a>
           </div>
         </div>
-      </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-12 sm:py-16 px-4 sm:px-6 bg-gray-900">
-        <div className="container mx-auto">
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white mb-3 sm:mb-4">
-              What You'll Get
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto px-4">
-              JumpWag will revolutionize how you discover and create viral TikTok content
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-4xl mx-auto">
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Trend Discovery</h3>
-              <p className="text-gray-400 text-sm sm:text-base">Instantly find the hottest TikTok trends before they go viral</p>
-            </div>
-
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">AI-Powered Ideas</h3>
-              <p className="text-gray-400 text-sm sm:text-base">Get personalized remix suggestions tailored to your niche</p>
-            </div>
-
-            <div className="text-center p-4 sm:p-6">
-              <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                <svg className="w-6 h-6 sm:w-8 sm:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-white mb-2">Viral Growth</h3>
-              <p className="text-gray-400 text-sm sm:text-base">Join trends early and maximize your content's reach</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-gray-800">
-        <div className="container mx-auto">
-          <div className="flex flex-col items-center space-y-4 mb-4">
-            <div className="flex items-center space-x-2">
-              <img src="/logo-1.png" alt="JumpWag Logo" className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="text-white font-bold text-sm sm:text-base">JumpWag</span>
-            </div>
+        {/* Right Content - Product Preview (Desktop only) */}
+        <div className="hidden lg:flex flex-1 justify-center items-start relative mt-12 lg:mt-0 pt-8">
+          <div className="relative w-[600px] h-[700px]">
+            {/* Background decorative circle */}
             
-            <div className="flex items-center space-x-6">
-              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-pink-400 transition-colors text-xl">
-                <FaTiktok />
-              </a>
-              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-purple-400 transition-colors text-xl">
-                <FaInstagram />
-              </a>
-              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 transition-colors text-xl">
-                <FaTwitter />
-              </a>
-              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-500 transition-colors text-xl">
-                <FaLinkedin />
-              </a>
+            
+            
+            {/* Trend Card - top left area */}
+            <div className="absolute top-16 left-0 preview-card rounded-2xl p-6 w-72 z-10">
+              <h3 className="text-white font-bold text-xl mb-3 text-center">Nicki Minaj Pose</h3>
+              <p className="text-neutral-light/60 text-sm text-center mb-4 leading-relaxed">
+                This trend references Nicki Minaj's iconic pose in her 2013 video of her song "High School" where she balanced crouched on the floor in stilettos with one leg over the other.
+              </p>
+              <div className="flex items-center justify-center gap-3 mb-4">
+                <span className="text-violet-500 text-xs">POV</span>
+                <span className="text-emerald-500 text-xs">Lipsync</span>
+                <button className="flex items-center gap-1 text-neutral-light/50 text-xs">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  Save Trend
+                </button>
+              </div>
+              <button className="w-full btn-primary text-void py-2.5 rounded-full font-semibold text-sm">
+                Generate Remix Ideas
+              </button>
+              <p className="text-neutral-light/40 text-xs text-center mt-2">This action costs 1 credit</p>
             </div>
-          </div>
-          
-          <div className="text-center">
-            <div className="flex justify-center space-x-4 mb-3 text-xs sm:text-sm">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Use</a>
-              <span className="text-gray-600">|</span>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+
+            {/* Remix Ideas Card - right side */}
+            <div className="absolute top-32 right-0 translate-x-24 preview-card rounded-2xl p-6 w-96 z-20">
+              <div className="text-center mb-4">
+                <h4 className="font-bold text-2xl"><span className="text-white">Your </span><span className="gradient-text">Remix Ideas</span></h4>
+                <p className="text-pop-pink text-sm">For: Nicki Minaj Pose Challenge</p>
+              </div>
+              <div className="border rounded-xl border-white/10 px-2 py-2 relative flex items-center">
+                {/* Left chevron */}
+                <button className="absolute -left-5 top-1/2 -translate-y-1/2 text-neutral-light/40">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                
+                <div className="flex-1 px-4">
+                  <p className="text-neutral-light/50 text-sm text-center mb-1">#1</p>
+                  <h5 className="text-white font-semibold text-center mb-2 text-lg">Clean and Slay</h5>
+                  <p className="text-neutral-light/60 text-sm leading-relaxed">
+                    Start the video attempting the Nicki pose in a messy room with you "struggling" to balance because of all the clutter. Then cut to the same pose executed flawlessly in a spotless, organized space you've cleaned.
+                  </p>
+                  <p className="text-neutral-light/50 text-sm mt-3 leading-relaxed">
+                    The message being that a clean environment literally gives you more balance and confidence.
+                  </p>
+                </div>
+
+                {/* Right chevron */}
+                <button className="absolute -right-5 top-1/2 -translate-y-1/2 text-accent">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+              <div className="flex justify-center gap-1 mt-4 mb-4">
+                <div className="w-2 h-2 rounded-full bg-pop-pink"></div>
+                <div className="w-2 h-2 rounded-full bg-white/30"></div>
+                <div className="w-2 h-2 rounded-full bg-white/30"></div>
+              </div>
+              <div className="flex items-center justify-between">
+                <button className="flex items-center gap-1 text-neutral-light/60 text-sm">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  Save Idea
+                </button>
+                <button className="flex items-center gap-1 bg-pop-blue text-void text-sm border border-pop-pink/30 px-3 py-1 rounded-full">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                  </svg>
+                  Copy Idea
+                </button>
+              </div>
             </div>
-            <p className="text-gray-400 text-xs sm:text-sm">
-              © 2025 JumpWag. All rights reserved.
-            </p>
+
+            {/* Trends Feed Card - bottom left, aligned with email input */}
+            <div className="absolute bottom-5 left-0 -translate-x-12 preview-card rounded-2xl p-5 w-72 z-10">
+              <div className="text-center mb-4">
+                <h4 className="text-white font-bold text-lg">Top <span className="gradient-text">Tiktok Trends</span></h4>
+                <h4 className="text-white font-bold text-lg">Today</h4>
+                <p className="text-neutral-light/50 text-md mt-1">A real-time feed of what's blowing up on TikTok</p>
+              </div>
+              <div className="border-gradient rounded-full p-2.5 flex items-center gap-2 mb-3">
+                <svg className="w-4 h-4 text-neutral-light/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <span className="text-neutral-light/50 text-xs">Enter keyword</span>
+              </div>
+              <div className="flex gap-1 overflow-x-auto">
+                <span className="bg-white/10 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">All</span>
+                <span className="text-neutral-light/50 text-xs px-2 py-1 flex items-center gap-1 whitespace-nowrap">
+                  <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                  </svg>
+                  My Trends
+                </span>
+                <span className="text-neutral-light/50 text-xs px-2 py-1 whitespace-nowrap">POV</span>
+                <span className="text-neutral-light/50 text-xs px-2 py-1 whitespace-nowrap">Dance</span>
+                <span className="text-neutral-light/50 text-xs px-2 py-1 whitespace-nowrap">Lipsync</span>
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
+      </main>
     </div>
   )
 }
