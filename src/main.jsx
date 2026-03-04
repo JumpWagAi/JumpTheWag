@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import TermsOfUse from './pages/TermsOfUse.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import RefundPolicy from './pages/RefundPolicy.jsx'
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: '/privacy',
     element: <PrivacyPolicy />,
+  },
+  {
+    path: '/refund-policy',
+    element: <RefundPolicy />,
   },
 ])
 

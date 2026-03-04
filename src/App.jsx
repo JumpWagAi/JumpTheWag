@@ -305,6 +305,7 @@ function App() {
           <div className="flex gap-6">
             <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+            <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
           </div>
         </div>
       </footer>
