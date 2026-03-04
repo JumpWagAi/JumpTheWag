@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { FaTiktok, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter, FaInstagram } from 'react-icons/fa6'
 
@@ -296,6 +297,17 @@ function App() {
           </div>
         </div>
       </main>
+
+      {/* Footer */}
+      <footer className="relative z-10 border-t border-white/10 py-6 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-light/50">
+          <span>&copy; {new Date().getFullYear()} JumpWag. All rights reserved.</span>
+          <div className="flex gap-6">
+            <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
+            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
