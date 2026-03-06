@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Navbar from '../Navbar'
 import { client, urlFor } from '../sanityClient'
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   _id,
   title,
+  excerpt,
   publishedAt,
   mainImage,
   body
@@ -40,8 +42,22 @@ function BlogPost() {
     )
   }
 
+  const ogImage = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : null
+
   return (
     <div className="min-h-screen bg-void">
+      <Helmet>
+        <title>{post.title} | Jumpwag Blog</title>
+        <meta name="description" content={post.excerpt || post.title} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt || post.title} />
+        <meta property="og:type" content="article" />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt || post.title} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+      </Helmet>
       <Navbar />
 
       {/* Post */}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import Navbar from '../Navbar'
 import { client, urlFor } from '../sanityClient'
 
@@ -25,6 +26,13 @@ function Blog() {
 
   return (
     <div className="min-h-screen bg-void">
+      <Helmet>
+        <title>Blog | Jumpwag — Tips, Trends & Insights for Creators</title>
+        <meta name="description" content="Tips, trends, and insights for creators. Stay ahead with the latest content strategies for TikTok, Instagram, and YouTube." />
+        <meta property="og:title" content="Blog | Jumpwag" />
+        <meta property="og:description" content="Tips, trends, and insights for creators." />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navbar />
 
       {/* Content */}
