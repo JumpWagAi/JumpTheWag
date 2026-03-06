@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '../Navbar'
-import { client, urlFor } from '../sanityClient'
+import { client, urlFor, urlForWithVanity } from '../sanityClient'
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   _id,
@@ -10,7 +10,10 @@ const POST_QUERY = `*[_type == "post" && slug.current == $slug][0] {
   excerpt,
   publishedAt,
   mainImage,
-  body
+  body,
+  seo,
+  categories[]->{ _id, title, slug },
+  tags[]->{ _id, title, slug }
 }`
 
 function BlogPost() {
@@ -43,14 +46,17 @@ function BlogPost() {
   }
 
   const ogImage = post.mainImage ? urlFor(post.mainImage).width(1200).height(630).url() : null
+  const metaTitle = post.seo?.metaTitle || post.title
+  const metaDescription = post.seo?.metaDescription || post.excerpt || post.title
 
   return (
     <div className="min-h-screen bg-void">
       <Helmet>
-        <title>{post.title} | Jumpwag Blog</title>
-        <meta name="description" content={post.excerpt || post.title} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt || post.title} />
+        {post.seo?.noIndex && <meta name="robots" content="noindex" />}
+        <title>{metaTitle} | Jumpwag Blog</title>
+        <meta name="description" content={metaDescription} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="article" />
         {ogImage && <meta property="og:image" content={ogImage} />}
         <meta name="twitter:card" content="summary_large_image" />
@@ -75,10 +81,26 @@ function BlogPost() {
 
         {post.mainImage && (
           <img
-            src={urlFor(post.mainImage).width(1200).url()}
-            alt={post.title}
+            src={urlForWithVanity(post.mainImage, post.mainImage.vanityFilename).width(1200).url()}
+            alt={post.mainImage.alt || post.title}
             className="w-full rounded-2xl mb-10 object-cover max-h-[500px]"
           />
+        )}
+
+        {/* Categories & Tags */}
+        {(post.categories?.length > 0 || post.tags?.length > 0) && (
+          <div className="flex flex-wrap gap-2 mb-10">
+            {post.categories?.map((cat) => (
+              <span key={cat._id} className="bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full">
+                {cat.title}
+              </span>
+            ))}
+            {post.tags?.map((tag) => (
+              <span key={tag._id} className="bg-text-default/10 text-neutral-light/70 text-xs px-3 py-1 rounded-full">
+                {tag.title}
+              </span>
+            ))}
+          </div>
         )}
 
         {/* Render body blocks */}

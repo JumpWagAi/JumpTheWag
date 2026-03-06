@@ -34,7 +34,34 @@ export default defineType({
       type: 'image',
       options: {
         hotspot: true,
+        storeOriginalFilename: true,
       },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt Text',
+          type: 'string',
+          description: 'Describe the image for accessibility and SEO.',
+        }),
+        defineField({
+          name: 'vanityFilename',
+          title: 'SEO Filename',
+          type: 'string',
+          description: 'A keyword-rich filename for image SEO (e.g. "jumpwag-trend-ideas.png"). Leave blank to use the original filename.',
+        }),
+      ],
+    }),
+    defineField({
+      name: 'categories',
+      title: 'Categories',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'category' }] }],
+    }),
+    defineField({
+      name: 'tags',
+      title: 'Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
     }),
     defineField({
       name: 'publishedAt',
@@ -62,6 +89,12 @@ export default defineType({
           ],
         },
       ],
+    }),
+    defineField({
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo',
+      description: 'Override the default meta title and description for search engines.',
     }),
   ],
   preview: {

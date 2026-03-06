@@ -45,7 +45,7 @@ for (const entry of entries) {
 async function injectBlogPostMeta() {
   try {
     const posts = await client.fetch(
-      `*[_type == "post"]{ title, excerpt, "slug": slug.current, mainImage }`
+      `*[_type == "post"]{ title, excerpt, "slug": slug.current, mainImage, seo }`
     )
 
     for (const post of posts) {
@@ -57,7 +57,8 @@ async function injectBlogPostMeta() {
       }
 
       let html = fs.readFileSync(filePath, 'utf-8')
-      const description = post.excerpt || post.title
+      const title = post.seo?.metaTitle || post.title
+      const description = post.seo?.metaDescription || post.excerpt || post.title
       const ogImage = post.mainImage
         ? urlFor(post.mainImage).width(1200).height(630).url()
         : null
@@ -65,11 +66,11 @@ async function injectBlogPostMeta() {
       // Replace the default title
       html = html.replace(
         /<title>.*?<\/title>/,
-        `<title>${escapeHtml(post.title)} | Jumpwag Blog</title>`
+        `<title>${escapeHtml(title)} | Jumpwag Blog</title>`
       )
 
       // Remove any existing duplicate titles
-      const titleTag = `<title>${escapeHtml(post.title)} | Jumpwag Blog</title>`
+      const titleTag = `<title>${escapeHtml(title)} | Jumpwag Blog</title>`
       const titleCount = (html.match(/<title>/g) || []).length
       if (titleCount > 1) {
         let first = true
@@ -88,14 +89,19 @@ async function injectBlogPostMeta() {
         `<meta name="description" content="${escapeAttr(description)}">`
       )
 
+      // Add noindex if set
+      if (post.seo?.noIndex) {
+        html = html.replace('</head>', `    <meta name="robots" content="noindex">\n  </head>`)
+      }
+
       // Build SEO meta tags
       const seoTags = [
-        `<meta property="og:title" content="${escapeAttr(post.title)}">`,
+        `<meta property="og:title" content="${escapeAttr(title)}">`,
         `<meta property="og:description" content="${escapeAttr(description)}">`,
         `<meta property="og:type" content="article">`,
         ogImage ? `<meta property="og:image" content="${ogImage}">` : '',
         `<meta name="twitter:card" content="summary_large_image">`,
-        `<meta name="twitter:title" content="${escapeAttr(post.title)}">`,
+        `<meta name="twitter:title" content="${escapeAttr(title)}">`,
         `<meta name="twitter:description" content="${escapeAttr(description)}">`,
         ogImage ? `<meta name="twitter:image" content="${ogImage}">` : '',
       ]

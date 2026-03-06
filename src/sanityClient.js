@@ -13,3 +13,11 @@ const builder = imageUrlBuilder(client)
 export function urlFor(source) {
   return builder.image(source)
 }
+
+export function urlForWithVanity(source, vanityFilename) {
+  const base = builder.image(source)
+  if (vanityFilename) {
+    return base.vanityName(vanityFilename)
+  }
+  return base
+}

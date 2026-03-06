@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Navbar from '../Navbar'
-import { client, urlFor } from '../sanityClient'
+import { client, urlFor, urlForWithVanity } from '../sanityClient'
 
 const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
   _id,
@@ -10,7 +10,8 @@ const POSTS_QUERY = `*[_type == "post"] | order(publishedAt desc) {
   slug,
   excerpt,
   publishedAt,
-  mainImage
+  mainImage,
+  categories[]->{ _id, title, slug }
 }`
 
 function Blog() {
@@ -58,12 +59,21 @@ function Blog() {
               >
                 {post.mainImage && (
                   <img
-                    src={urlFor(post.mainImage).width(600).height(340).url()}
-                    alt={post.title}
+                    src={urlForWithVanity(post.mainImage, post.mainImage.vanityFilename).width(600).height(340).url()}
+                    alt={post.mainImage.alt || post.title}
                     className="w-full h-48 object-cover"
                   />
                 )}
                 <div className="p-5">
+                  {post.categories?.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {post.categories.map((cat) => (
+                        <span key={cat._id} className="bg-accent/10 text-accent text-xs font-semibold px-2 py-0.5 rounded-full">
+                          {cat.title}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <p className="text-neutral-light/40 text-xs mb-2">
                     {new Date(post.publishedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
