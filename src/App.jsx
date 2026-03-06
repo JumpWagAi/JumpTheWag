@@ -35,7 +35,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-void overflow-x-hidden relative">
+    <div className="min-h-screen bg-void overflow-x-hidden relative flex flex-col">
       {/* Modal CTA for Social Media */}
       {showModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90">
@@ -94,7 +94,7 @@ function App() {
       <Navbar />
 
       {/* Main Content */}
-      <main className="relative z-10 flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20 py-12 lg:py-20 max-w-[1600px] mx-auto w-full">
+      <main className="relative z-10 flex-1 flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20 py-12 lg:py-20 max-w-[1600px] mx-auto w-full">
         {/* Left Content */}
         <div className="flex-1 max-w-xl lg:max-w-2xl text-center lg:text-left">
 
@@ -297,10 +297,10 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-text-default/10 py-6 px-6">
-        <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-light/50">
-          <span>&copy; {new Date().getFullYear()} JumpWag. All rights reserved.</span>
-          <div className="flex gap-6">
+      <footer className="relative z-10 mt-auto border-t border-text-default/10 py-6 px-4 sm:px-6">
+        <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-neutral-light/50">
+          <span className="text-center">&copy; {new Date().getFullYear()} JumpWag. All rights reserved.</span>
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-6">
             <Link to="/terms" className="hover:text-text-default transition-colors">Terms of Use</Link>
             <Link to="/privacy" className="hover:text-text-default transition-colors">Privacy Policy</Link>
             <Link to="/refund-policy" className="hover:text-text-default transition-colors">Refund Policy</Link>
