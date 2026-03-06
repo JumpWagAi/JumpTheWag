@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FaTiktok, FaLinkedin } from 'react-icons/fa'
 import { FaXTwitter, FaInstagram } from 'react-icons/fa6'
+import Navbar from './Navbar'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -48,18 +49,18 @@ function App() {
             </button>
             <h2 className="text-4xl font-bold gradient-text mb-2">Sweet! </h2>
             <h2 className="text-2xl font-bold mb-2">You're on the waitlist.</h2>
-            <p className="text-white mb-4">While you wait, follow us on social media to stay updated.</p>
+            <p className="text-text-default mb-4">While you wait, follow us on social media to stay updated.</p>
             <div className="flex justify-center space-x-6 mb-2">
-              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-pink text-3xl">
+              <a href="https://www.tiktok.com/@jumpwag" target="_blank" rel="noopener noreferrer" className="text-text-default hover:text-pop-pink text-3xl">
                 <FaTiktok />
               </a>
-              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-blue text-3xl">
+              <a href="https://x.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-text-default hover:text-pop-blue text-3xl">
                 <FaXTwitter />
               </a>
-              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-pop-blue text-3xl">
+              <a href="https://www.linkedin.com/company/jumpwag" target="_blank" rel="noopener noreferrer" className="text-text-default hover:text-pop-blue text-3xl">
                 <FaLinkedin />
               </a>
-              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gradient-purple text-3xl">
+              <a href="https://www.instagram.com/jumpthewag" target="_blank" rel="noopener noreferrer" className="text-text-default hover:text-gradient-purple text-3xl">
                 <FaInstagram />
               </a>
             </div>
@@ -68,11 +69,11 @@ function App() {
         </div>
       )}
 
-      {/* Background vector overlays - desktop (right side only) */}
-      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '150px', left: 'calc(50% + 50px)', width: '636px', height: '601px', transform: 'rotate(-121.72deg)' }}>
+      {/* Background vector overlays - desktop (centered on right half) */}
+      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '50%', left: 'calc(50% + 140px)', width: '800px', height: '760px', transform: 'translate(-25%, -50%) rotate(-121.72deg)' }}>
         <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
       </div>
-      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '182px', left: 'calc(50% + 77px)', width: '636px', height: '601px', transform: 'rotate(-121.72deg)' }}>
+      <div className="hidden lg:block absolute pointer-events-none" style={{ top: '50%', left: 'calc(50% + 140px)', width: '800px', height: '760px', transform: 'translate(-20%, -48%) rotate(-121.72deg)' }}>
         <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
       </div>
 
@@ -90,25 +91,22 @@ function App() {
         <img src="/Vector.svg" alt="" className="w-full h-full" style={{ opacity: 1 }} />
       </div>
 
+      <Navbar />
+
       {/* Main Content */}
-      <main className="relative z-10 min-h-screen flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20 py-12 lg:py-0">
+      <main className="relative z-10 flex flex-col lg:flex-row items-center justify-center px-6 lg:px-20 py-12 lg:py-20 max-w-[1600px] mx-auto w-full">
         {/* Left Content */}
         <div className="flex-1 max-w-xl lg:max-w-2xl text-center lg:text-left">
-          {/* Logo */}
-          <div className="flex items-center justify-center lg:justify-start space-x-2 mb-10 lg:mb-16">
-            <img src="/Jumpwag_logo_full.png" alt="JumpWag Logo" className="h-8" />
-          </div>
 
           {/* Heading */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-semibold leading-tight mb-6">
-            <span className="text-white">The Easiest Way to </span>
-            <br />
-            Join <span className="gradient-text">Tiktok Trends</span>
+            <span className="text-text-default">The Easiest Way to Join </span>
+            <span className="gradient-text">Viral Trends</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-neutral-light/70 text-base sm:text-lg mb-8 max-w-md mx-auto lg:mx-0">
-            Discover TikTok trends before they go stale and get AI-generated ideas tailored to your niche and brand.
+            Paste video links and get personalized content ideas for your brand.
           </p>
 
           {/* Email Form */}
@@ -154,7 +152,7 @@ function App() {
                     className="btn-primary rounded-full px-6 py-3 text-base font-semibold disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
                   >
                     {isLoading ? 'Joining...' : 'Join the Wagon'}
-                  </button>
+                    </button>
                 </div>
               </form>
             ) : (
@@ -187,15 +185,15 @@ function App() {
         </div>
 
         {/* Right Content - Product Preview (Desktop only) */}
-        <div className="hidden lg:flex flex-1 justify-center items-start relative mt-12 lg:mt-0 pt-8">
-          <div className="relative w-[600px] h-[700px]">
+        <div className="hidden lg:flex flex-1 justify-end items-start relative mt-12 lg:mt-0 pt-8 overflow-visible">
+          <div className="relative w-[500px] xl:w-[650px] h-[750px] xl:h-[900px] mr-[-40px] xl:mr-[-80px]">
             {/* Background decorative circle */}
             
             
             
             {/* Trend Card - top left area */}
-            <div className="absolute top-16 left-0 preview-card rounded-2xl p-6 w-72 z-10">
-              <h3 className="text-white font-bold text-xl mb-3 text-center">Nicki Minaj Pose</h3>
+            <div className="absolute top-0 left-0 xl:left-[-50px] preview-card rounded-2xl p-6 w-72 z-10">
+              <h3 className="text-text-default font-bold text-xl mb-3 text-center">Nicki Minaj Pose</h3>
               <p className="text-neutral-light/60 text-sm text-center mb-4 leading-relaxed">
                 This trend references Nicki Minaj's iconic pose in her 2013 video of her song "High School" where she balanced crouched on the floor in stilettos with one leg over the other.
               </p>
@@ -216,9 +214,9 @@ function App() {
             </div>
 
             {/* Remix Ideas Card - right side */}
-            <div className="absolute top-32 right-0 translate-x-24 preview-card rounded-2xl p-6 w-96 z-20">
+            <div className="absolute top-[80px] xl:top-[104px] right-0 preview-card rounded-2xl p-6 w-80 xl:w-96 z-20">
               <div className="text-center mb-4">
-                <h4 className="font-bold text-2xl"><span className="text-white">Your </span><span className="gradient-text">Remix Ideas</span></h4>
+                <h4 className="font-bold text-2xl"><span className="text-text-default">Your </span><span className="gradient-text">Remix Ideas</span></h4>
                 <p className="text-pop-pink text-sm">For: Nicki Minaj Pose Challenge</p>
               </div>
               <div className="border rounded-xl border-white/10 px-2 py-2 relative flex items-center">
@@ -231,7 +229,7 @@ function App() {
                 
                 <div className="flex-1 px-4">
                   <p className="text-neutral-light/50 text-sm text-center mb-1">#1</p>
-                  <h5 className="text-white font-semibold text-center mb-2 text-lg">Clean and Slay</h5>
+                  <h5 className="text-text-default font-semibold text-center mb-2 text-lg">Clean and Slay</h5>
                   <p className="text-neutral-light/60 text-sm leading-relaxed">
                     Start the video attempting the Nicki pose in a messy room with you "struggling" to balance because of all the clutter. Then cut to the same pose executed flawlessly in a spotless, organized space you've cleaned.
                   </p>
@@ -268,11 +266,11 @@ function App() {
               </div>
             </div>
 
-            {/* Trends Feed Card - bottom left, aligned with email input */}
-            <div className="absolute bottom-5 left-0 -translate-x-12 preview-card rounded-2xl p-5 w-72 z-10">
+            {/* Trends Feed Card - bottom left */}
+            <div className="absolute bottom-[180px] xl:bottom-[260px] left-[-60px] xl:left-[-112px] preview-card rounded-2xl p-5 w-72 z-10">
               <div className="text-center mb-4">
-                <h4 className="text-white font-bold text-lg">Top <span className="gradient-text">Tiktok Trends</span></h4>
-                <h4 className="text-white font-bold text-lg">Today</h4>
+                <h4 className="text-text-default font-bold text-lg">Top <span className="gradient-text">Tiktok Trends</span></h4>
+                <h4 className="text-text-default font-bold text-lg">Today</h4>
                 <p className="text-neutral-light/50 text-md mt-1">A real-time feed of what's blowing up on TikTok</p>
               </div>
               <div className="border-gradient rounded-full p-2.5 flex items-center gap-2 mb-3">
@@ -282,7 +280,7 @@ function App() {
                 <span className="text-neutral-light/50 text-xs">Enter keyword</span>
               </div>
               <div className="flex gap-1 overflow-x-auto">
-                <span className="bg-white/10 text-white text-xs px-2 py-1 rounded-full whitespace-nowrap">All</span>
+                <span className="bg-text-default/10 text-text-default text-xs px-2 py-1 rounded-full whitespace-nowrap">All</span>
                 <span className="text-neutral-light/50 text-xs px-2 py-1 flex items-center gap-1 whitespace-nowrap">
                   <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
@@ -299,13 +297,13 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="relative z-10 border-t border-white/10 py-6 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-light/50">
+      <footer className="relative z-10 border-t border-text-default/10 py-6 px-6">
+        <div className="max-w-[1600px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-neutral-light/50">
           <span>&copy; {new Date().getFullYear()} JumpWag. All rights reserved.</span>
           <div className="flex gap-6">
-            <Link to="/terms" className="hover:text-white transition-colors">Terms of Use</Link>
-            <Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link to="/refund-policy" className="hover:text-white transition-colors">Refund Policy</Link>
+            <Link to="/terms" className="hover:text-text-default transition-colors">Terms of Use</Link>
+            <Link to="/privacy" className="hover:text-text-default transition-colors">Privacy Policy</Link>
+            <Link to="/refund-policy" className="hover:text-text-default transition-colors">Refund Policy</Link>
           </div>
         </div>
       </footer>

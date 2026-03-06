@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 function RefundPolicy() {
   return (
-    <div className="min-h-screen bg-void text-white px-6 py-12">
+    <div className="min-h-screen bg-void text-text-default px-6 py-12">
       <div className="max-w-3xl mx-auto">
         <Link to="/" className="text-accent hover:opacity-70 text-sm mb-8 inline-block">&larr; Back to Home</Link>
 
@@ -18,7 +18,7 @@ function RefundPolicy() {
             <strong>Questions or concerns?</strong> If you have any questions about this policy, please contact us at <a href="mailto:jumpwagai@gmail.com" className="text-accent hover:underline">jumpwagai@gmail.com</a>.
           </p>
 
-          <h2 className="text-2xl font-bold text-white pt-4">Summary of Key Points</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">Summary of Key Points</h2>
           <ul className="list-disc pl-6 space-y-2">
             <li><strong>No refunds:</strong> Payments for Pro subscriptions are non-refundable</li>
             <li><strong>Cancel anytime:</strong> You can cancel your subscription at any time and keep access until the end of your billing period</li>
@@ -26,7 +26,7 @@ function RefundPolicy() {
             <li><strong>EU/UK users:</strong> 14-day cooling-off period applies where required by law</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-white pt-4">Table of Contents</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">Table of Contents</h2>
           <ol className="list-decimal pl-6 space-y-1">
             <li>No Refunds</li>
             <li>Cancellations</li>
@@ -35,7 +35,7 @@ function RefundPolicy() {
             <li>How Can You Contact Us About This Policy?</li>
           </ol>
 
-          <h2 className="text-2xl font-bold text-white pt-4">1. No Refunds</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">1. No Refunds</h2>
           <p className="italic text-neutral-light/60">In Short: All sales are final. Payments for Jumpwag Pro subscriptions are non-refundable.</p>
           <p>All purchases of Jumpwag Pro subscriptions (monthly or annual) are final and non-refundable. By purchasing a subscription, you acknowledge and agree that:</p>
           <ul className="list-disc pl-6 space-y-1">
@@ -52,7 +52,7 @@ function RefundPolicy() {
             <li>Submit 3 trend links per month for analysis</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-white pt-4">2. Cancellations</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">2. Cancellations</h2>
           <p className="italic text-neutral-light/60">In Short: You can cancel your subscription at any time. You'll keep access until the end of your current billing period.</p>
           <p>You can cancel your Jumpwag Pro subscription at any time by:</p>
           <ul className="list-disc pl-6 space-y-1">
@@ -70,7 +70,7 @@ function RefundPolicy() {
           </ul>
           <p>Canceling does not result in a refund for the current billing period.</p>
 
-          <h2 className="text-2xl font-bold text-white pt-4">3. Billing Errors and Disputes</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">3. Billing Errors and Disputes</h2>
           <p className="italic text-neutral-light/60">In Short: If you were charged in error, contact us immediately and we'll review your case.</p>
           <p>If you believe you were charged incorrectly, please contact us at <a href="mailto:jumpwagai@gmail.com" className="text-accent hover:underline">jumpwagai@gmail.com</a> within 7 days of the charge with:</p>
           <ul className="list-disc pl-6 space-y-1">
@@ -87,7 +87,7 @@ function RefundPolicy() {
           </ul>
           <p>Refunds for billing errors are issued at our sole discretion after review.</p>
 
-          <h2 className="text-2xl font-bold text-white pt-4">4. EU/UK Consumer Rights</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">4. EU/UK Consumer Rights</h2>
           <p className="italic text-neutral-light/60">In Short: If you're in the EU or UK, you have a 14-day right to cancel and receive a refund.</p>
           <p>If you live in the European Union, United Kingdom, or other jurisdictions with mandatory cooling-off periods, you have the right to cancel your Jumpwag Pro subscription within 14 days of purchase and receive a full refund.</p>
           <p>To exercise this right:</p>
@@ -98,7 +98,7 @@ function RefundPolicy() {
           </ul>
           <p>This right applies only to your initial purchase, not to subscription renewals.</p>
 
-          <h2 className="text-2xl font-bold text-white pt-4">5. How Can You Contact Us About This Policy?</h2>
+          <h2 className="text-2xl font-bold text-text-default pt-4">5. How Can You Contact Us About This Policy?</h2>
           <p>If you have questions or comments about this policy, you may email us at <a href="mailto:jumpwagai@gmail.com" className="text-accent hover:underline">jumpwagai@gmail.com</a>.</p>
         </div>
       </div>

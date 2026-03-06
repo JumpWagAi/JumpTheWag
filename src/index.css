@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+:root {
+  --void: #F5F5F7;
+  --card: #FFFFFF;
+  --text-default: #1A1A1A;
+  --neutral-light: #1A1A1A;
+  --border-color: #E5E5E5;
+}
+
+.dark {
+  --void: #010405;
+  --card: #1D1D21;
+  --text-default: #FAFAFA;
+  --neutral-light: #FAFAFA;
+  --border-color: #1A1A1A;
+}
+
 @theme {
   /* Primary accent */
   --color-accent: #F571B9;
@@ -9,12 +25,12 @@
   --color-pop-blue: #48BDF0;
   
   /* Backgrounds */
-  --color-void: #010405;
-  --color-card: #1D1D21;
+  --color-void: var(--void);
+  --color-card: var(--card);
   
   /* Text */
-  --color-text-default: #FAFAFA;
-  --color-neutral-light: #FAFAFA;
+  --color-text-default: var(--text-default);
+  --color-neutral-light: var(--neutral-light);
   
   /* Gradients */
   --color-gradient-pink: #F571B9;
@@ -48,7 +64,11 @@
   }
 
   .btn-secondary {
-    @apply bg-black text-white px-2 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity;
+    @apply bg-white text-black border border-gray-200 px-2 py-2 rounded-full font-semibold hover:opacity-90 transition-opacity;
+  }
+
+  .dark .btn-secondary {
+    @apply bg-black text-white border-transparent;
   }
 
   .glow-effect {
@@ -61,6 +81,12 @@
   }
 
   .preview-card {
+    background: linear-gradient(135deg, var(--card) 0%, #F0F0F2 100%);
+    border: 1px solid var(--border-color);
+    box-shadow: 2px 2px 4px 0px #00000010;
+  }
+
+  .dark .preview-card {
     background: linear-gradient(135deg, #18181B 0%, #09090B 100%);
     border: 1px solid #1A1A1A;
     box-shadow: 2px 2px 4px 0px #00000026;
