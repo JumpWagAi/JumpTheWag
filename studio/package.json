@@ -2,17 +2,16 @@
   "name": "jumpwag-studio",
   "private": true,
   "version": "1.0.0",
-  
   "scripts": {
     "dev": "sanity dev",
     "build": "sanity build",
     "deploy": "sanity deploy"
   },
   "dependencies": {
-    "sanity": "^3",
-    "@sanity/vision": "^3",
-    "react": "^18",
-    "react-dom": "^18",
+    "@sanity/vision": "^5.13.0",
+    "react": "^19",
+    "react-dom": "^19",
+    "sanity": "^5.13.0",
     "styled-components": "^6.1.15"
   }
 }
