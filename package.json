@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "prerender": "react-static-prerender --with-build",
+    "prerender": "react-static-prerender --with-build && node fix-prerender-paths.js",
     "lint": "eslint .",
     "preview": "vite preview"
   },
