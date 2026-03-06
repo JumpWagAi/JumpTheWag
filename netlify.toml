@@ -2,6 +2,9 @@
   command = "npm run prerender"
   publish = "static-pages"
 
+[build.environment]
+  PUPPETEER_CACHE_DIR = "/opt/buildhome/.cache/puppeteer"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
